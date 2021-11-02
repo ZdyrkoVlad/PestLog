@@ -1,0 +1,50 @@
+<!--  <app-navbar></app-navbar>-->
+  <!-- Main jumbotron for a primary marketing message or call to actions -->
+
+<header class="masthead" [ngStyle]="{'background-image': 'url(' + (PostState$ | async).imageURL + ')'}" >
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          <h1 ng-bind="header.title">{{(PostState$ | async).title}}</h1>
+          <span class="subheading" ng-bind="header.subtitle">  </span>
+          <span class="meta" ng-if="header.byline.length > 0" ng-bind="header.byline">
+            {{(PostState$ | async).createDate}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+  <div >
+    <div class="container">
+
+
+      <p></p>
+      <p></p>
+      <div>{{(PostState$ | async).content}}</div>
+      <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p> -->
+
+
+    </div>
+
+
+  </div>
+
+<!--  <div class="container">-->
+<!--    &lt;!&ndash; Example row of columns &ndash;&gt;-->
+<!--    <p>Comments</p>-->
+<!--&lt;!&ndash;    <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-md-4">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h2>Lesson 1</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>&ndash;&gt;-->
+<!--&lt;!&ndash;        <p><a class="btn btn-secondary" href="/taskList" role="button">View details »</a></p>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <div>{{CourseID}}</div>&ndash;&gt;-->
+<!--    <hr>-->
+
+<!--  </div> &lt;!&ndash; /container &ndash;&gt;-->

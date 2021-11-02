@@ -1,0 +1,94 @@
+
+.chat-online {
+  color: #34ce57
+}
+
+.chat-offline {
+  color: #e4606d
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow-y: scroll
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  background-image: linear-gradient(180deg, rgba(113, 180, 171, 0.6), rgb(165, 80, 178, 0.8));
+
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+.chat-message-left,
+.chat-message-right {
+  display: flex;
+  flex-shrink: 0
+}
+
+.chat-message-left {
+  margin-right: auto
+}
+
+.chat-message-right {
+  flex-direction: row-reverse;
+  margin-left: auto
+}
+.py-3 {
+  padding-top: 1rem!important;
+  padding-bottom: 1rem!important;
+}
+.px-4 {
+  padding-right: 1.5rem!important;
+  padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+  flex-grow: 0!important;
+}
+.border-top {
+  border-top: 1px solid #dee2e6!important;
+}
+
+#stick{
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  margin-right:15px;
+  right: 0;
+  top: 200px;
+  z-index: 99999;
+  cursor: pointer;
+}
+
+
+#stick-chat{
+  display: block;
+  width: 400px;
+  height: 150px;
+  position: fixed;
+
+  right: 0;
+  top: 200px;
+  z-index: 99999;
+}
+
+
+@media screen and (max-width: 480px) {
+  .add_palitra {
+    top: 100px !important;
+  }
+}

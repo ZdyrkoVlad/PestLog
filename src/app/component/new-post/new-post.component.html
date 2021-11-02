@@ -1,0 +1,25 @@
+
+
+<div  class="text-center" style="margin-top:10%">
+  <div style="position:relative;width:35%; left:32.5%;margin-bottom:0.5% "  >
+    <div >
+      <label for="title" class="form-label" >Title</label>
+      <input type="text"  class="form-control" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"   id="title">
+    </div>
+    <div>
+      <label for="image" >ImageURL</label>
+      <input type="text-ariars" class="form-control" [(ngModel)]="imageURL" [ngModelOptions]="{standalone: true}" id="image">
+    </div>
+    <div>
+      <label for="content">Content</label>
+      <textarea  rows="5" cols="40" type="text-ariars" [(ngModel)]="content" [ngModelOptions]="{standalone: true}" class="form-control" id="content"></textarea>
+    </div>
+
+  </div>
+  <div >
+  <button class="btn btn-primary" style="position: relative; margin-right:27%">Preview</button>
+
+  <button class="btn btn-primary" style="position: relative; " (click)="createPost()" >Save</button>
+  </div>
+</div>
+
