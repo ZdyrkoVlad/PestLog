@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Apollo-Client-myproject"
+    }
+  },
+  "defaultProject": "Apollo-Client-myproject",
+  "cli": {
+    "analytics": false
+  }
 }
