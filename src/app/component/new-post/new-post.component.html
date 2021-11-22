@@ -17,9 +17,10 @@
 
   </div>
   <div >
-  <button class="btn btn-primary" style="position: relative; margin-right:27%">Preview</button>
+  <button class="btn btn-primary" style="position: relative; margin-right:27%" (click)="previewPost()" >Preview</button>
 
   <button class="btn btn-primary" style="position: relative; " (click)="createPost()" >Save</button>
   </div>
+  <app-preview [post]="post" style="position:relative; top:100px; "></app-preview>
 </div>
 

@@ -7,7 +7,7 @@ export const POST_KEY = 'post';
 
 export interface PostState {
   ids: number[];
-  selected: number;
+  selected: string;
   posts: Post[];
   postsTest: { number: Post };
 }
@@ -15,7 +15,7 @@ export interface PostState {
 
 export const initialState: PostState = {
   ids: [2, 3],
-  selected: 2,
+  selected: '2',
   postsTest: null,
   posts: [
     {
@@ -45,7 +45,7 @@ export const initialState: PostState = {
 
 export function PostReducer(state = initialState, action: PostAction) {
   switch (action.type) {
-    case PostActions.ADD_POST: {
+    case PostActions.ADD_POST_COMPLETE: {
       return {
         ...state,
         posts: [...state.posts, action.payload.post]
@@ -56,9 +56,16 @@ export function PostReducer(state = initialState, action: PostAction) {
     case PostActions.SELECT_POST: {
       return {
         ...state,
-        selected: Number(action.payload)
+        selected: action.payload
       };
     }
+    case PostActions.GET_ALL_POST_COMPLETE: {
+      return {
+        ...state,
+        posts: action.payload.downloadPosts
+      };
+    }
+
     default:
       return state;
   }
@@ -78,17 +85,11 @@ export const SelectedSelector = createSelector(
   state => state.selected
 );
 
-
-export const TestSelector = createSelector(
-  featureSelector,
-  state => state.posts.map(testMap)
-);
-
 export const SpecificPostSelector = createSelector(
   featureSelector,
   state => {
     console.log('State', state);
-    const postState = state.posts.filter(post => post.id === state.selected.toString());
+    const postState = state.posts.filter(post => post.id === state.selected);
     console.log('SpecificPostSelector', postState[0]);
     if (postState.length > 0) {
       return postState[0];
@@ -99,8 +100,27 @@ export const SpecificPostSelector = createSelector(
   }
 );
 
+export const SpecificPostSelector1 = createSelector(
+  featureSelector,
+  state => {
+    console.log('State1', state);
+
+    return state.posts[0];
+
+  }
+);
+
+export const TestSelector = createSelector(
+  featureSelector,
+
+  state => {
+    console.log('TestSelector1', state);
+    return state.posts.map(testMap);
+  }
+);
+
 
 function testMap(element: any) {
-  console.log('testMap', element);
+  // console.log('testMap', element);
   return element;
 }

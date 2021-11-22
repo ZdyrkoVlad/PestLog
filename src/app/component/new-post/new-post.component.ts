@@ -18,6 +18,9 @@ export class NewPostComponent implements OnInit {
   @Input() imageURL: string = 'https://i.pinimg.com/originals/61/17/ba/6117baa1f8ae7eac41cae8514afac2cb.jpg';
   @Input() content: string = 'The Stormlight Archive is a series of epic fantasy novels written by American author Brandon Sanderson, planned to consist of ten books. The first novel, The Way of Kings, was published on August 31, 2010. As of 2020, the series consists of four published novels and two novellas. A fifth novel is expected to release in 2023, while writing for the latter half of the series will begin after Sanderson finishes writing the upcoming Era Three Mistborn trilogy ';
 
+  post: Post;
+
+
   constructor(private store: Store,
               private router: Router) {
   }
@@ -36,6 +39,19 @@ export class NewPostComponent implements OnInit {
     this.store.dispatch(new AddPost({post: posts}));
 
     this.router.navigate(['/postList']);
+  }
+
+  previewPost() {
+    let posts: Post = new Post;
+    posts.id = Math.floor(Math.random() * (1000000 + 1)).toString();
+    posts.title = this.title;
+    posts.imageURL = this.imageURL;
+    posts.content = this.content;
+    const data: Date = new Date();
+    posts.createDate = data.toISOString();
+    this.post = posts;
+    console.log('createPost', posts);
+
   }
 
   ngOnInit(): void {

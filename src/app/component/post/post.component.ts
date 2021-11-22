@@ -2,8 +2,9 @@ import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Post} from '../../dao/blog/post';
-import {AllPostSelector, featureSelector, SpecificPostSelector} from '../../store/reducers/post';
+import {AllPostSelector, featureSelector, SpecificPostSelector, SpecificPostSelector1} from '../../store/reducers/post';
 import {Observable} from 'rxjs';
+import {SelectPost} from '../../store/actions/post';
 
 @Component({
   selector: 'app-post',
@@ -14,24 +15,25 @@ export class PostComponent implements OnInit {
 
 
   id: number;
+
   PostState$: Observable<Post> = this.store.select(SpecificPostSelector);
-  @Input() post: Post;
 
   constructor(private activateRoute: ActivatedRoute,
               private store: Store) {
 
-    // this.id = activateRoute.snapshot.params['id'];
+    this.id = activateRoute.snapshot.params['id'];
 
-    console.log('this.id', this.id);
 
+    // this.store.dispatch(new SelectPost(this.id.toString()));
 
   }
 
   ngOnInit(): void {
-    this.PostState$.pipe(post => {
-      console.log('AllPostSelector', post);
-      return post;
-    });
+    console.log('POST ', this.id);
+    // this.PostState$.pipe(post => {
+    //   console.log('SpecificPostSelector', post);
+    //   return post;
+    // });
 
   }
 

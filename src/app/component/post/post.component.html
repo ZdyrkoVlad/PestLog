@@ -1,7 +1,8 @@
 <!--  <app-navbar></app-navbar>-->
   <!-- Main jumbotron for a primary marketing message or call to actions -->
 
-<header class="masthead" [ngStyle]="{'background-image': 'url(' + (PostState$ | async).imageURL + ')'}" >
+<header class="masthead" [ngStyle]="{'background-image': 'url(' +(PostState$ | async).imageURL + ')'}" >
+
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -22,7 +23,6 @@
     <div class="container">
 
 
-      <p></p>
       <p></p>
       <div>{{(PostState$ | async).content}}</div>
       <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p> -->

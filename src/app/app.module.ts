@@ -29,7 +29,7 @@ import {AccountComponent} from './component/account/account.component';
 import {SiginComponent} from './component/sigin/sigin.component';
 import {SigUpComponent} from './component/sig-up/sig-up.component';
 
-
+import {PreviewComponent} from 'src/app/component/preview/preview.component';
 
 
 
@@ -96,7 +96,7 @@ const appRoutes: Routes = [
   {path: 'postList', component: PostListComponent},
   {path: 'newPost', component: NewPostComponent},
   {path: 'chat', component: ChatComponent},
-  {path: 'post', component: PostComponent},
+  {path: 'post/:id', component: PostComponent},
   {path: '**', component: PageNotFoundComponentComponent}
 
 ];
@@ -110,7 +110,7 @@ const appRoutes: Routes = [
     FooterBarComponent,
 
     AccountComponent,
-
+    PreviewComponent,
     SiginComponent,
     SigUpComponent,
 

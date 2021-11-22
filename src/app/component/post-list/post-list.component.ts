@@ -5,8 +5,8 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
-import {AllPostSelector, SelectedSelector, TestSelector} from '../../store/reducers/post';
-import {AddPost, SelectPost} from '../../store/actions/post';
+import {AllPostSelector, SelectedSelector, SpecificPostSelector1, TestSelector} from '../../store/reducers/post';
+import {AddPost, GetAllPost, SelectPost} from '../../store/actions/post';
 
 import {Router} from '@angular/router';
 
@@ -30,7 +30,7 @@ export class PostListComponent implements OnInit {
   PostList: Observable<[Post]>;
 
   PostList2$: Observable<Post[]> = this.store.select(AllPostSelector);
-  selectedNumber$: Observable<any> = this.store.select(SelectedSelector);
+  selectedNumber$: Observable<any> = this.store.select(SpecificPostSelector1);
   testList$: Observable<Post[]> = this.store.select(TestSelector);
 
   // PostList2$: Observable<Post[]>;
@@ -39,7 +39,6 @@ export class PostListComponent implements OnInit {
     // this.store.dispatch(deletePost());
     // console.log(this.postService.deletePost(id));
   }
-
 
 
   createPost() {
@@ -61,23 +60,14 @@ export class PostListComponent implements OnInit {
   }
 
   selectedElement(selectedId: string) {
-    this.router.navigate(['/post']);
+
+    this.router.navigate(['/post/' + selectedId]);
     this.store.dispatch(new SelectPost(selectedId));
 
   }
 
   ngOnInit(): void {
-
-
-    // this.postService.getAllPosts().subscribe((data) => {
-    //   console.log('console.log();', data.data.allPosts);
-    //   this.PostList = data.data.allPosts;
-    //
-    // });
-
-    // console.log(this.postService.getAllPostSub());
-
-
+    this.store.dispatch(new GetAllPost());
   }
 
 }

@@ -4,7 +4,10 @@ import {gql} from '@apollo/client/core';
 import {Subject, Subscription, Observable} from 'rxjs';
 import {subscribeToResult} from 'rxjs/internal-compatibility';
 import {PostSubscription} from './subscribePost';
-
+import {Post} from 'src/app/dao/blog/post';
+import {ApolloError} from 'apollo-client';
+import {catchError, map} from 'rxjs/operators';
+import {throwError} from 'rxjs';
 
 const getAllPosts = gql`
   query{
@@ -14,7 +17,8 @@ const getAllPosts = gql`
       content,
       commentId,
       authorId,
-      createDate
+      createDate,
+      imageURL
 
     }
   }
@@ -23,9 +27,15 @@ const getAllPosts = gql`
 
 
 const createPost = gql`
-  mutation($title:String!,$content:String! ) {
-    createPost(title:$title, content:$content){
-      id
+  mutation($title:String!,$content:String!, $imageURL: String!  ) {
+    createPost(title:$title, content:$content,imageURL:$imageURL ){
+      id,
+      title,
+      content,
+      commentId,
+      authorId,
+      createDate,
+      imageURL
     }
   }
 
@@ -66,19 +76,17 @@ export class PostService {
   }
 
 
-  createPost() {
-    console.log('create post');
+  createPost(post: Post): Observable<any> {
 
-    this.apollo.mutate({
+
+    return this.apollo.mutate({
       mutation: createPost,
       variables: {
-        title: 'testFrom',
-        content: 'Yes Content'
+        title: post.title,
+        content: post.content,
+        imageURL: post.imageURL
+
       }
-    }).subscribe(({data}) => {
-      console.log('got data', data);
-    }, (error) => {
-      console.log('there was an error sending the query', error);
     });
   }
 

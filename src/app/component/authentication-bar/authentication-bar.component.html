@@ -2,44 +2,54 @@
 
 
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
 
 
 
 
-<!--  </header>-->
-<div style="margin-bottom:60px">
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
 
-    <a class="navbar-brand pointer" routerLink="postList" > Pestlog</a>
+<header style="margin-bottom:60px">
+<!--<div style="margin-bottom:60px">-->
+<!--<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">-->
+<!--  <div class="container">-->
 
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link pointer" routerLink="postList">Post</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link pointer" routerLink="newPost">New Post</a>
-        </li>
+<!--    <a class="navbar-brand pointer" routerLink="postList" > Pestlog</a>-->
 
-        <li class="nav-item">
-          <a class="nav-link pointer" routerLink="about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link pointer" routerLink="roadmap">Roadmap</a>
-        </li>
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link pointer" routerLink="contact">Contact</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--          <a class="nav-link pointer" routerLink="singup">Sing up</a>-->
-<!--        </li>-->
+<!--    <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--      <ul class="navbar-nav ml-auto">-->
 
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link pointer" routerLink="contact">Contact</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+<!--&lt;!&ndash;        <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a class="nav-link pointer" routerLink="singup">Sing up</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </li>&ndash;&gt;-->
+
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--</div>-->
+<!--  class="h3 mb-3 text-muted"-->
+
+  <nav class="nav">
+    <div class="nav__title"><a class="navbar-brand pointer" routerLink="postList" > Pestlog</a></div>
+    <ul class="nav__list">
+
+      <li class="nav__item ">
+        <a  routerLink="postList">Post</a>
+      </li>
+      <li class="nav__item">
+        <a routerLink="newPost">New Post</a>
+      </li>
+
+      <li class="nav__item">
+        <a routerLink="about">About</a>
+      </li>
+      <li class="nav__item" >
+        <a  routerLink="roadmap">Roadmap</a>
+      </li>
+    </ul>
+  </nav>
+</header>
