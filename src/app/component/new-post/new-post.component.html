@@ -10,17 +10,25 @@
       <label for="image" >ImageURL</label>
       <input type="text-ariars" class="form-control" [(ngModel)]="imageURL" [ngModelOptions]="{standalone: true}" id="image">
     </div>
-    <div>
-      <label for="content">Content</label>
-      <textarea  rows="5" cols="40" type="text-ariars" [(ngModel)]="content" [ngModelOptions]="{standalone: true}" class="form-control" id="content"></textarea>
-    </div>
+
+
 
   </div>
+  <div>
+    <textarea class="variable-textarea" [(ngModel)]="markdown " id="content"></textarea>
+  </div>
   <div >
+
   <button class="btn btn-primary" style="position: relative; margin-right:27%" (click)="previewPost()" >Preview</button>
 
   <button class="btn btn-primary" style="position: relative; " (click)="createPost()" >Save</button>
   </div>
-  <app-preview [post]="post" style="position:relative; top:100px; "></app-preview>
+
+
+<!--  <app-preview [post]="post" style="position:relative; top:100px; "></app-preview>-->
 </div>
 
+<div style="position:relative; left:10%; width:75%">
+  <markdown class="variable-binding" [data]="markdown "  ></markdown>
+</div>
+<div style="height:60px"></div>

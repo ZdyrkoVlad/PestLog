@@ -1,5 +1,5 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {PostService} from 'src/app/services/post';
+import {PostService} from 'src/app/services/post.service';
 import {Post} from 'src/app/dao/blog/post';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Observable} from 'rxjs';
@@ -61,7 +61,7 @@ export class PostListComponent implements OnInit {
 
   selectedElement(selectedId: string) {
 
-    this.router.navigate(['/post/' + selectedId]);
+    this.router.navigate(['/post/' + selectedId ]);
     this.store.dispatch(new SelectPost(selectedId));
 
   }

@@ -1,5 +1,5 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {PostService} from 'src/app/services/post';
+import {PostService} from 'src/app/services/post.service';
 import {PostListComponent} from './post-list.component';
 import {StoreModule} from '@ngrx/store';
 import {RouterTestingModule} from '@angular/router/testing';

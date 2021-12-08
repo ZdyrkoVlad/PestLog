@@ -29,6 +29,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     console.log('POST ', this.id);
     // this.PostState$.pipe(post => {
     //   console.log('SpecificPostSelector', post);

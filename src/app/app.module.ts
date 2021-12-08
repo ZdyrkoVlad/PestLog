@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, Injectable, NgModule} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -32,12 +32,11 @@ import {SigUpComponent} from './component/sig-up/sig-up.component';
 import {PreviewComponent} from 'src/app/component/preview/preview.component';
 
 
-
 import {AuthenticationBarComponent} from './component/authentication-bar/authentication-bar.component';
 import {FooterBarComponent} from './component/footer-bar/footer-bar.component';
 
 import {PostListComponent} from './component/post-list/post-list.component';
-import {PostService} from './services/post';
+import {PostService} from './services/post.service';
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 import * as Sentry from '@sentry/angular';
@@ -57,9 +56,20 @@ import {PostEffects} from 'src/app/store/effects/post';
 
 import {AboutComponent} from './component/about/about.component';
 import {ContactComponent} from './component/contact/contact.component';
-import { NewPostComponent } from './component/new-post/new-post.component';
-import { RoadmapComponent } from './component/roadmap/roadmap.component';
-import { CommentsComponent } from './component/comments/comments.component';
+import {NewPostComponent} from './component/new-post/new-post.component';
+import {RoadmapComponent} from './component/roadmap/roadmap.component';
+import {CommentsComponent} from './component/comments/comments.component';
+import {ChatService} from './services/chat.service';
+import {PostNewDialogComponent} from './component/post-new-dialog/post-new-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+
+import 'prismjs';
+import 'prismjs/components/prism-typescript.min.js';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
+
+import { MarkdownModule } from 'ngx-markdown';
 // Sentry.init({
 //   dsn: 'https://7ffa92d7aec74fbea0f9ce4397c7b952@o1036466.ingest.sentry.io/6004061',
 //   logLevel: LogLevel.Debug,
@@ -104,54 +114,49 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-
-
     AuthenticationBarComponent,
     FooterBarComponent,
-
     AccountComponent,
     PreviewComponent,
     SiginComponent,
     SigUpComponent,
-
-
-
-
     AccouontAchievementsComponent,
-
-
     PostListComponent,
-
     PostComponent,
     ChatComponent,
-
     AboutComponent,
     ContactComponent,
     NewPostComponent,
     RoadmapComponent,
-    CommentsComponent
+    CommentsComponent,
+    PostNewDialogComponent
 
   ],
+  entryComponents: [PostNewDialogComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     HttpLinkModule,
     MatButtonToggleModule,
+    MatIconModule,
     MatDialogModule,
+
+    MarkdownModule.forRoot(),
     FormsModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
     EffectsModule.forRoot([PostEffects]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    BrowserAnimationsModule,
   ],
   exports: [HttpLinkModule],
 
   bootstrap: [AppComponent],
   providers: [{provide: ErrorHandler, useClass: SentryErrorHandler},
     {provide: MatDialogRef, useValue: {}},
-    DataService, ShareService, NavBarService, PostService]
+    DataService, ShareService, NavBarService, PostService, ChatService]
 })
 export class AppModule {
 

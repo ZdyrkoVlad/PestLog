@@ -1,7 +1,7 @@
 <!--  <app-navbar></app-navbar>-->
   <!-- Main jumbotron for a primary marketing message or call to actions -->
 
-<header class="masthead" [ngStyle]="{'background-image': 'url(' +(PostState$ | async).imageURL + ')'}" >
+<header  class="masthead"  [ngStyle]="{'background-image': 'url(' +(PostState$ | async).imageURL + ')'}" id="header"  >
 
   <div class="overlay"></div>
   <div class="container">
@@ -20,31 +20,18 @@
 </header>
 
   <div >
-    <div class="container">
+    <div class="container " >
 
 
       <p></p>
-      <div>{{(PostState$ | async).content}}</div>
+<!--      <div>{{(PostState$ | async).content}}</div>-->
+      <div style="position:relative; left:0%; width:100%;">
+        <markdown class="variable-binding" [data]="(PostState$ | async).content "  ></markdown>
+      </div>
+
       <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p> -->
 
-
+    <div style="height:60px"></div>
     </div>
 
-
   </div>
-
-<!--  <div class="container">-->
-<!--    &lt;!&ndash; Example row of columns &ndash;&gt;-->
-<!--    <p>Comments</p>-->
-<!--&lt;!&ndash;    <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;      <div class="col-md-4">&ndash;&gt;-->
-<!--&lt;!&ndash;        <h2>Lesson 1</h2>&ndash;&gt;-->
-<!--&lt;!&ndash;        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>&ndash;&gt;-->
-<!--&lt;!&ndash;        <p><a class="btn btn-secondary" href="/taskList" role="button">View details »</a></p>&ndash;&gt;-->
-<!--&lt;!&ndash;      </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
-<!--    &lt;!&ndash;      <div>{{CourseID}}</div>&ndash;&gt;-->
-<!--    <hr>-->
-
-<!--  </div> &lt;!&ndash; /container &ndash;&gt;-->

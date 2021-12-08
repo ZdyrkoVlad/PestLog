@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {ChatService} from '../../services/chat.service';
+import {takeUntil, map} from 'rxjs/operators';
+import {Chat} from 'src/app/dao/blog/Chat';
 
 @Component({
   selector: 'app-chat',
@@ -10,14 +13,34 @@ export class ChatComponent implements OnInit {
 
   chatBoolean: boolean = false;
 
-  constructor() {
+  constructor(private chatService: ChatService) {
   }
 
   chatShow() {
     this.chatBoolean = !this.chatBoolean;
   }
 
+
   ngOnInit(): void {
+    // this.chatService.getAllChat().pipe(
+    //
+    // ).subscribe(
+    //   data => {
+    //     console.log('this.chatService.getAllChat', data);
+    //   }
+    // );
+
+    this.chatService.subscribeChatByIf('').pipe(
+      map((data: any) => {
+        return data.data.chatSubscription;
+      })
+    ).subscribe(
+      (data: Chat) => {
+        console.log('this.chatService.getAllChat', data.messageIdList);
+      }
+    )
+    ;
+
   }
 
 }

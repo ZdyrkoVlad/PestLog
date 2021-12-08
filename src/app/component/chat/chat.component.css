@@ -20,9 +20,9 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);*/
+  /*-webkit-border-radius: 10px;*/
+  /*border-radius: 10px;*/
 }
 
 /* Handle */
@@ -30,7 +30,7 @@
   -webkit-border-radius: 10px;
   background-image: linear-gradient(180deg, rgba(113, 180, 171, 0.6), rgb(165, 80, 178, 0.8));
 
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);*/
 }
 
 .chat-message-left,

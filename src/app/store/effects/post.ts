@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {AddPost, PostActions, AddPostComplete, GetAllPost, GetAllPostComplete} from '../actions/post';
 import {map, tap, switchMap} from 'rxjs/operators';
-import {PostService} from 'src/app/services/post';
+import {PostService} from 'src/app/services/post.service';
 import {Post} from '../../dao/blog/post';
 import {Store} from '@ngrx/store';
 

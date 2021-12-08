@@ -64,12 +64,8 @@ export class PostService {
   ) {
   }
 
-  querySubscription = Subscription;
 
   getAllPosts(): Observable<any> {
-
-    console.log('get all post');
-
     return this.apollo.watchQuery<any>({
       query: getAllPosts,
     }).valueChanges;
