@@ -39,7 +39,9 @@ export class NewPostComponent implements OnInit {
     '   - Another unordered bullet\n' +
     '\n' +
     '### Blockquote\n' +
-    '> Blockquote to the max';
+    '> Blockquote to the max\n' +
+    '' +
+    '![alt text](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/84d70e21-203d-45a9-841f-70599837f532/devfhkz-6ff02005-da72-451d-9084-5d26deb082ea.png/v1/fill/w_800,h_568,q_80,strp/blue_night_by_avokad_devfhkz-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTY4IiwicGF0aCI6IlwvZlwvODRkNzBlMjEtMjAzZC00NWE5LTg0MWYtNzA1OTk4MzdmNTMyXC9kZXZmaGt6LTZmZjAyMDA1LWRhNzItNDUxZC05MDg0LTVkMjZkZWIwODJlYS5wbmciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.JVaR08bFYIYHXG3d3vQF5_dphPkqC4R-Nr8tyty3qLE)';
 
   constructor(private store: Store,
               private router: Router,

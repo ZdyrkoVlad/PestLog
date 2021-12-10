@@ -37,7 +37,7 @@ export class ChatService {
   }
 
 
-  subscribeChatByIf(id: string
+  subscribeChatById(id: string
   ) {
     this.query =  gql`
       subscription($id:ID!){

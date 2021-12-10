@@ -11,7 +11,7 @@ import {Chat} from 'src/app/dao/blog/Chat';
 export class ChatComponent implements OnInit {
 
 
-  chatBoolean: boolean = false;
+  chatBoolean: boolean = true;
 
   constructor(private chatService: ChatService) {
   }
@@ -30,7 +30,7 @@ export class ChatComponent implements OnInit {
     //   }
     // );
 
-    this.chatService.subscribeChatByIf('').pipe(
+    this.chatService.subscribeChatById('').pipe(
       map((data: any) => {
         return data.data.chatSubscription;
       })
