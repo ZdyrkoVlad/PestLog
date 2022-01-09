@@ -1,0 +1,6 @@
+
+<h2 mat-dialog-title style="color: #222222">Введите имя диалога</h2>
+
+<input type="text-ariars" class="form-control" style="display: inline-block;width:100%; margin-right: 5px; margin-bottom: 10px" [(ngModel)]="chatName" [ngModelOptions]="{standalone: true}">
+
+<button class="btn btn-primary" style="position: relative;  left: 35%;" (click)="createChat()" >Create Chat</button>

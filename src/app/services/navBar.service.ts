@@ -7,13 +7,11 @@ import {OnInit} from '@angular/core';
   providedIn: 'root'
 })
 
-export class NavBarService implements OnInit {
+export class NavBarService{
   public BarNavID = {course: null, lesson: null, task: null};
 
 
-  ngOnInit(): void {
 
-  }
 
   setCourseID() {
     this.BarNavID.course = 1;

@@ -1,6 +1,6 @@
 export class Comment {
   id: string;
-  authorId: string;
+  authorId?: string;
   postId: string;
   text: string;
 }

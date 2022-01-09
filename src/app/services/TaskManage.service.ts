@@ -6,7 +6,7 @@ import {OnInit} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService implements OnInit {
+export class TaskService {
 // Queries to get id all
   document1 = gql`
     subscription($name:String!){
@@ -14,9 +14,6 @@ export class TaskService implements OnInit {
     }
   `;
 
-  ngOnInit(): void {
-
-  }
 
 
 }

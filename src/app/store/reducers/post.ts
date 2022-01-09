@@ -9,6 +9,7 @@ export interface PostState {
   ids: number[];
   selected: string;
   posts: Post[];
+  userAuth: boolean;
   postsTest: { number: Post };
 }
 
@@ -17,6 +18,7 @@ export const initialState: PostState = {
   ids: [2, 3],
   selected: '2',
   postsTest: null,
+  userAuth: false,
   posts: [
     {
       id: '3',
@@ -44,14 +46,13 @@ export const initialState: PostState = {
 //   initialState);
 
 export function PostReducer(state = initialState, action: PostAction) {
+
   switch (action.type) {
     case PostActions.ADD_POST_COMPLETE: {
       return {
         ...state,
         posts: [...state.posts, action.payload.post]
-
-      }
-        ;
+      };
     }
     case PostActions.SELECT_POST: {
       return {
@@ -119,6 +120,13 @@ export const TestSelector = createSelector(
   }
 );
 
+export const authSelector = createSelector(
+  featureSelector,
+  state => {
+    console.log('authSelector', this.state.userAuth);
+    return state.userAuth;
+  }
+);
 
 function testMap(element: any) {
   // console.log('testMap', element);

@@ -1,0 +1,76 @@
+<!--<div (click)="createPost()" style="cursor: pointer">Create Post</div>-->
+<!--<div (click)="createPostDialog()" style="cursor: pointer">Create Post From Dialog</div>-->
+<!--<div> Selected Number {{selectedNumber$ | async}} </div>-->
+
+<!--<p>{{testList$ | async}}</p>-->
+<div style="position: relative; display: inline-block;left:20%; width:55%;">
+<!--  <p >timeline</p>-->
+  <div>
+<!--    <div *ngFor="let post of PostList; let i = index" style="margin-bottom: 10px; ">-->
+
+
+<!--      <div class="card shadow-sm" style=" width:100%; ">-->
+<!--        &lt;!&ndash; <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> &ndash;&gt;-->
+<!--        &lt;!&ndash;      <img src="https://focus.ua/static/storage/thumbs/890x450/0/93/8ba4c848-7955471153e3c5f9874560450ead6930.jpg?v=1765">&ndash;&gt;-->
+<!--        <div class="card-body">-->
+<!--          <p class="card-text">{{post.title}}</p>-->
+<!--          <p class="card-text">{{post.content}}</p>-->
+<!--          <p class="card-text">{{post.createDate}}</p>-->
+<!--          <div class="d-flex justify-content-between align-items-center">-->
+<!--            <div class="btn-group">-->
+<!--              <a type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/post', '1']">View</a>-->
+<!--            </div>-->
+<!--            <small class="text-muted"></small>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--    </div>-->
+  </div>
+
+
+  <div *ngFor="let post of testList$ | async" style="position: relative;margin-bottom: 10px; ">
+
+
+    <div class="card shadow-sm" style="position: relative; width:100%; ">
+      <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+      <!--      <img src="https://focus.ua/static/storage/thumbs/890x450/0/93/8ba4c848-7955471153e3c5f9874560450ead6930.jpg?v=1765">-->
+<!--      <div class="masthead" style="background-image: url('https://cdn.cnn.com/cnnnext/dam/assets/210920135441-star-wars-hidden-fortress-elder-exlarge-169.jpg'); height:500px;"></div>-->
+      <img class="masthead" style=" object-fit: cover;
+
+    height: 600px;" src="{{post.imageURL}}">
+
+      <div class="card-body" >
+
+        <p class="card-text">{{post.title}}</p>
+<!--        Add a pipe that changes markdown text to usual text | markdownTransform. For post preview content-->
+<!--        <p class="card-text" style="  overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis;  max-width: 400px;">{{post.content }}</p>-->
+
+        <p class="card-text">{{post.createDate }}</p>
+<!--        <p class="card-text">{{post.id}}</p>-->
+        <div class="d-flex justify-content-between align-items-center" >
+          <div class="btn-group">
+            <a type="button" class="btn btn-sm btn-outline-secondary" (click)="selectedElement(post.id)"  >View</a>
+          </div>
+          <div class="btn-group" >
+            <a type="button" class="btn btn-sm btn-outline-secondary" (click)="selectedElementEdit(post.id)"  >Edit</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<div style="position:relative;  display: inline-block;left:10%;vertical-align:top; width:20%; left:20%">
+<!--  <p>text</p>-->
+<!--  <app-chat></app-chat>-->
+
+    <div id="stick" mat-button (click)="chatShow()"><img src="../../../../assets/static/chat.png" width="40" height="38"></div>
+
+</div>
+

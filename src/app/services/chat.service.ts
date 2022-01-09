@@ -15,10 +15,23 @@ const getAllChats = gql`
     getAllChat{
       id,
       messageIdList,
-      createDate
+      createDate,
+      chatName
     }
   }
 
+`;
+
+const createNewChat = gql`
+  mutation($chatName: String!) {
+    createChat(chatName:$chatName){
+      id,
+      createDate,
+      chatName,
+      chatName
+
+    }
+  }
 `;
 
 
@@ -36,10 +49,13 @@ export class ChatService {
     }).valueChanges;
   }
 
+  deleteChat() {
 
-  subscribeChatById(id: string
+  }
+
+  subscribeChatById(chatId: string
   ) {
-    this.query =  gql`
+    this.query = gql`
       subscription($id:ID!){
         chatSubscription(id:$id){
           id,
@@ -48,14 +64,26 @@ export class ChatService {
         }
       }`;
 
-    console.log('subscribeChatByIf');
+    console.log('subscribeChatByIf', chatId);
 
     return this.apollo.subscribe({
       query: this.query,
       variables: {
-        id: '61aa23eb720fbf7f3d38baa8'
+        id: chatId
       }
     });
+  }
+
+  newChatCreate(chatname: string) {
+    console.log('newChatCreate mut', chatname);
+
+    return this.apollo.mutate({
+      mutation: createNewChat,
+      variables: {
+        chatName: chatname,
+      }
+    });
+
   }
 
 }

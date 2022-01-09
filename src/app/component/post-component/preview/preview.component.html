@@ -1,0 +1,30 @@
+
+  <!--  <app-navbar></app-navbar>-->
+  <!-- Main jumbotron for a primary marketing message or call to actions -->
+<div style="width:100%; " >
+  <header class="masthead" [ngStyle]="{'background-image': 'url(' + post.imageURL + ')'}" *ngIf="post!=null">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1 ng-bind="header.title">{{post.title}}</h1>
+            <span class="subheading" ng-bind="header.subtitle">  </span>
+            <span class="meta" ng-if="header.byline.length > 0" ng-bind="header.byline">
+            {{post.createDate}}
+          </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div>
+    <markdown class="variable-binding" [data]="post.content" style="margin-bottom:60%; color:black"  ></markdown>
+
+  </div>
+
+
+</div>
+
+

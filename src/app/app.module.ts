@@ -21,21 +21,20 @@ import {DataService} from './data.service';
 import {ShareService} from './share.service';
 
 
-import {AccouontAchievementsComponent} from './component/accouont-achievements/accouont-achievements.component';
+import {AccouontAchievementsComponent} from './component/user-personal-component/accouont-achievements/accouont-achievements.component';
 
 
 import {PageNotFoundComponentComponent} from './component/page-not-found-component/page-not-found-component.component';
-import {AccountComponent} from './component/account/account.component';
+import {AccountComponent} from './component/user-personal-component/account/account.component';
 import {SiginComponent} from './component/sigin/sigin.component';
 import {SigUpComponent} from './component/sig-up/sig-up.component';
 
-import {PreviewComponent} from 'src/app/component/preview/preview.component';
+import {PreviewComponent} from 'src/app/component/post-component/preview/preview.component';
 
 
 import {AuthenticationBarComponent} from './component/authentication-bar/authentication-bar.component';
-import {FooterBarComponent} from './component/footer-bar/footer-bar.component';
 
-import {PostListComponent} from './component/post-list/post-list.component';
+import {PostListComponent} from './component/post-component/post-list/post-list.component';
 import {PostService} from './services/post.service';
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
@@ -45,23 +44,23 @@ import {logger} from 'codelyzer/util/logger';
 
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {StoreModule} from '@ngrx/store';
-import {PostComponent} from './component/post/post.component';
+import {PostComponent} from './component/post-component/post/post.component';
 
 import {reducers, metaReducers} from './store/reducers';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
-import {ChatComponent} from './component/chat/chat.component';
+import {ChatComponent} from './component/chat-component/chat/chat.component';
 import {EffectsModule} from '@ngrx/effects';
 import {PostEffects} from 'src/app/store/effects/post';
 
 import {AboutComponent} from './component/about/about.component';
-import {ContactComponent} from './component/contact/contact.component';
-import {NewPostComponent} from './component/new-post/new-post.component';
+import {ContactComponent} from './component/chat-component/contact/contact.component';
+import {NewPostComponent} from './component/post-component/new-post/new-post.component';
 import {RoadmapComponent} from './component/roadmap/roadmap.component';
 import {CommentsComponent} from './component/comments/comments.component';
 import {ChatService} from './services/chat.service';
-import {PostNewDialogComponent} from './component/post-new-dialog/post-new-dialog.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {PostNewDialogComponent} from './component/post-component/post-new-dialog/post-new-dialog.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 
 import 'prismjs';
@@ -69,11 +68,21 @@ import 'prismjs/components/prism-typescript.min.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-highlight/prism-line-highlight.js';
 
-import { MarkdownModule } from 'ngx-markdown';
+import {MarkdownModule} from 'ngx-markdown';
+import {MessageService} from './services/message.service';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ChatDialogComponent} from './component/chat-component/chat-dialog/chat-dialog.component';
+import {NewChatDialogComponent} from './component/chat-component/new-chat-dialog/new-chat-dialog.component';
+import { PostEditorComponent } from './component/post-component/post-editor/post-editor.component';
+import {AppRoutingModule} from './app-routing.module';
+
 // Sentry.init({
 //   dsn: 'https://7ffa92d7aec74fbea0f9ce4397c7b952@o1036466.ingest.sentry.io/6004061',
 //   logLevel: LogLevel.Debug,
 // });
+
+// import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+// import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 @Injectable()
 export class SentryErrorHandler implements ErrorHandler {
@@ -87,35 +96,11 @@ export class SentryErrorHandler implements ErrorHandler {
 }
 
 
-const appRoutes: Routes = [
-  // { path: '', component: AppComponent},
-
-  {path: 'sigin', component: SiginComponent},
-  // {path: 'lesons', component: LesonsComponent},
-  // {path: 'courses', component: CoursesComponent},
-  {path: 'singup', component: SigUpComponent},
-  {path: 'account', component: AccountComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'roadmap', component: RoadmapComponent},
-
-
-  {path: 'testService', component: AppComponent},
-
-  {path: 'accountAchi', component: AccouontAchievementsComponent},
-  {path: 'postList', component: PostListComponent},
-  {path: 'newPost', component: NewPostComponent},
-  {path: 'chat', component: ChatComponent},
-  {path: 'post/:id', component: PostComponent},
-  {path: '**', component: PageNotFoundComponentComponent}
-
-];
-
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationBarComponent,
-    FooterBarComponent,
+
     AccountComponent,
     PreviewComponent,
     SiginComponent,
@@ -129,19 +114,28 @@ const appRoutes: Routes = [
     NewPostComponent,
     RoadmapComponent,
     CommentsComponent,
-    PostNewDialogComponent
+    PostNewDialogComponent,
+    ChatDialogComponent,
+    NewChatDialogComponent,
+    PageNotFoundComponentComponent,
+    PostEditorComponent,
+
 
   ],
   entryComponents: [PostNewDialogComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     HttpClientModule,
     HttpLinkModule,
     MatButtonToggleModule,
     MatIconModule,
     MatDialogModule,
-
+    ReactiveFormsModule,
+    // ShareButtonsModule.withConfig({
+    //   debug: true
+    // }),
+    // ShareIconsModule,
     MarkdownModule.forRoot(),
     FormsModule,
     StoreModule.forRoot(reducers, {
@@ -156,7 +150,7 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
   providers: [{provide: ErrorHandler, useClass: SentryErrorHandler},
     {provide: MatDialogRef, useValue: {}},
-    DataService, ShareService, NavBarService, PostService, ChatService]
+    DataService, ShareService, NavBarService, PostService, ChatService, MessageService]
 })
 export class AppModule {
 
@@ -166,7 +160,7 @@ export class AppModule {
     httpLink: HttpLink,
   ) {
 
-    this.initApollo('localhost:9900', httpLink, apollo);
+    this.initApollo('127.0.0.1:9901', httpLink, apollo);
 
     const DEBUG = true;
     if (!DEBUG) {
@@ -194,11 +188,11 @@ export class AppModule {
 
   private initApollo<T>(serverUrlConnection: string, httpLink: HttpLink, apollo: Apollo) {
     const http = httpLink.create({
-      uri: 'http://localhost:9900/graphql'
+      uri: 'http://' + serverUrlConnection + '/graphql'
     });
     Sentry.captureMessage('initApollo');
     const ws = new WebSocketLink({
-      uri: `ws://localhost:9900/subscriptions`,
+      uri: `ws://` + serverUrlConnection + `/subscriptions`,
       options: {
         reconnect: true
       }
@@ -222,11 +216,11 @@ export class AppModule {
 
     const defaultOptions: DefaultOptions = {
       watchQuery: {
-        fetchPolicy: 'no-cache',
+        fetchPolicy: 'cache-first',
         errorPolicy: 'ignore',
       },
       query: {
-        fetchPolicy: 'no-cache',
+        fetchPolicy: 'cache-first',
         errorPolicy: 'all',
       },
     };

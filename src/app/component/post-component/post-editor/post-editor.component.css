@@ -1,0 +1,46 @@
+.variable-binding{
+  width: 90%;
+}
+
+.variable-textarea {
+  width: 49%;
+}
+
+.variable-textarea {
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.07);
+  min-height: 420px;
+  padding: 8px;
+  transition: all 300ms ease-out;
+}
+
+.variable-textarea:hover {
+  box-shadow: 0 6px 12px 3px rgba(0,0,0,.09),
+  0 2px 3px 1px rgba(0,0,0,.06);
+}
+
+.variable-binding {
+  display: block;
+  float:top;
+}
+body {
+  background: #f5f5f5;
+  color: #727c3e;
+  font-size: 15px;
+  padding: 8px 16px;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+h1 a:hover {
+  opacity: 0.87;
+  text-decoration: underline;
+}
+
+blockquote {
+  border-left: 3px solid rgba(0,0,0,0.21);
+  padding-left: 12px;
+  color: rgba(0,0,0,0.54);
+}
